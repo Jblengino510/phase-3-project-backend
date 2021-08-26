@@ -7,7 +7,6 @@ puts "Creating users..."
 
 User.create(user_name: "User 1")
 User.create(user_name: "User 2")
-User.create(user_name: "User 3")
 
 puts "Creating posts..."
 
