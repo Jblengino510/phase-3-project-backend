@@ -21,11 +21,32 @@ class ApplicationController < Sinatra::Base
     posts.to_json(include: :comments)
   end
 
+  get '/posts/:id' do
+    post = Post.find(params[:id])
+    post.to_json(include: :comments)
+  end
+
   post '/users' do
     user = User.create(
       user_name: params[:user_name]
     )
     user.to_json
+  end
+
+  post '/posts' do
+    post = Post.create(
+      album_name: params[:album_name],
+      image_url: params[:image_url],
+      genre: params[:genre],
+      artist: params[:artist],
+      tracklist: params[:tracklist]
+    )
+  end
+
+  delete '/posts/:id' do
+    deleted_post = Post.find(params[:id])
+    deleted_post.destroy
+    deleted_post.to_json
   end
 
 end
