@@ -49,6 +49,18 @@ class ApplicationController < Sinatra::Base
     deleted_post.to_json
   end
 
+  patch '/posts/:id' do
+    edited_post = Post.find(params[:id])
+    edited_post.Update(
+      album_name: params[:album_name],
+      image_url: params[:image_url],
+      genre: params[:genre],
+      artist: params[:artist],
+      tracklist: params[:tracklist]
+    )
+    edited_post.to_json
+  end
+
 end
 
 
