@@ -51,7 +51,7 @@ class ApplicationController < Sinatra::Base
 
   patch '/posts/:id' do
     edited_post = Post.find(params[:id])
-    edited_post.Update(
+    edited_post.update(
       album_name: params[:album_name],
       image_url: params[:image_url],
       genre: params[:genre],
